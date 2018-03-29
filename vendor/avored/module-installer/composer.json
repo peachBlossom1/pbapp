@@ -1,0 +1,26 @@
+{
+  "name": "avored/module-installer",
+  "type": "composer-plugin",
+  "description": "A composer plugin, to help install modules for AvoREd e commerce applications.",
+  "license": "MIT",
+  "keywords": ["composer", "composer-plugin", "composer-installer","avored-modules"],
+  "authors": [
+    {
+      "name": "Purvesh Patel",
+      "email": "ind.purvesh@gmail.com"
+    }
+  ],
+  "require": {
+    "composer/installers" : "^1.3.0",
+    "composer-plugin-api" : "^1.0"
+  },
+  "autoload": {
+    "psr-4": {"AvoRed\\Composer\\": "src/"}
+  },
+  "extra": {
+      "class": ["AvoRed\\Composer\\AvoRedModule"],
+      "branch-alias": {
+        "dev-master": "1.0.x-dev"
+       }
+  }
+}

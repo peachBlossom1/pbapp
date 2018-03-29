@@ -1,0 +1,2 @@
+# install
+AvoRed Install Module

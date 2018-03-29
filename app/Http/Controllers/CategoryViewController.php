@@ -69,7 +69,8 @@ class CategoryViewController extends Controller
 
     }
 
-    public function test(Request $request, $slug){
-        return response()->json(['response' => 'This is post method']);
+    public function test(Request $request){
+
+        return response()->json([$request->checkedboxes]);
     }
 }

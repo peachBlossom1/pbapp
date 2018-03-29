@@ -16,7 +16,7 @@ Route::get('/', 'HomeController@index')
 
 Route::get('/category/{slug}', 'CategoryViewController@view')
                 ->name('category.view');
-Route::get('/test', 'CategoryViewController@test');
+Route::post('/test', 'CategoryViewController@test');
 
 Route::get('/product/{slug}','ProductViewController@view')
                 ->name('product.view');
