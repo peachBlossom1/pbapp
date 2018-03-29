@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 29, 2018 at 06:52 AM
+-- Generation Time: Mar 29, 2018 at 08:01 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -217,7 +217,8 @@ INSERT INTO `avored_category_product` (`id`, `category_id`, `product_id`, `creat
 (12, 1, 12, NULL, NULL),
 (13, 1, 13, NULL, NULL),
 (14, 1, 14, NULL, NULL),
-(15, 1, 15, NULL, NULL);
+(15, 1, 15, NULL, NULL),
+(16, 1, 20, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -848,7 +849,8 @@ INSERT INTO `avored_products` (`id`, `type`, `name`, `slug`, `sku`, `description
 (16, 'VARIATION', 'vnv', 'vnv', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-03-28 21:03:15', '2018-03-28 21:03:15'),
 (17, 'VARIATION', 'zxczx', 'zxczx', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-03-28 21:03:33', '2018-03-28 21:03:33'),
 (18, 'BASIC', 'zxczx', 'zxczx-1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-03-28 21:03:41', '2018-03-28 21:03:41'),
-(19, 'BASIC', 'sdf', 'sdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-03-28 21:49:32', '2018-03-28 21:49:32');
+(19, 'BASIC', 'sdf', 'sdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-03-28 21:49:32', '2018-03-28 21:49:32'),
+(20, 'BASIC', 'Su', 'su', '111', '<p>adasd<br></p>', 1, 1, 1, '1.000000', 1, 1.00, 1.00, 1.00, 1.00, NULL, NULL, '2018-03-29 00:52:37', '2018-03-29 00:53:11');
 
 -- --------------------------------------------------------
 
@@ -905,7 +907,8 @@ INSERT INTO `avored_product_images` (`id`, `product_id`, `path`, `is_main_image`
 (11, 11, '/uploads/catalog/images/n/y/n/CC2600.jpg', 1, '2018-03-28 20:50:28', '2018-03-28 20:50:28'),
 (12, 12, '/uploads/catalog/images/t/b/n/20121018143846738.jpg', 1, '2018-03-28 20:50:29', '2018-03-28 20:50:29'),
 (13, 13, '/uploads/catalog/images/l/i/k/coffee-maker-20.jpg', 1, '2018-03-28 20:50:29', '2018-03-28 20:50:29'),
-(14, 14, '/uploads/catalog/images/0/y/4/tsf02crsa.jpg', 1, '2018-03-28 20:50:29', '2018-03-28 20:50:29');
+(14, 14, '/uploads/catalog/images/0/y/4/tsf02crsa.jpg', 1, '2018-03-28 20:50:29', '2018-03-28 20:50:29'),
+(15, 20, '/uploads/catalog/images/x/r/h/Screenshot (6).png', 1, '2018-03-29 00:53:11', '2018-03-29 00:53:11');
 
 -- --------------------------------------------------------
 
@@ -940,7 +943,8 @@ INSERT INTO `avored_product_prices` (`id`, `product_id`, `price`, `created_at`, 
 (12, 12, '80.700000', '2018-03-28 20:50:29', '2018-03-28 20:50:29'),
 (13, 13, '70.800000', '2018-03-28 20:50:29', '2018-03-28 20:50:29'),
 (14, 14, '20.900000', '2018-03-28 20:50:29', '2018-03-28 20:50:29'),
-(15, 15, '112.000000', '2018-03-28 21:00:40', '2018-03-28 21:01:04');
+(15, 15, '112.000000', '2018-03-28 21:00:40', '2018-03-28 21:01:04'),
+(16, 20, '11.000000', '2018-03-29 00:53:11', '2018-03-29 00:53:11');
 
 -- --------------------------------------------------------
 
@@ -1548,7 +1552,7 @@ ALTER TABLE `avored_categories`
 -- AUTO_INCREMENT for table `avored_category_product`
 --
 ALTER TABLE `avored_category_product`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `avored_configurations`
@@ -1626,7 +1630,7 @@ ALTER TABLE `avored_permission_role`
 -- AUTO_INCREMENT for table `avored_products`
 --
 ALTER TABLE `avored_products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `avored_product_attribute_integer_values`
@@ -1638,13 +1642,13 @@ ALTER TABLE `avored_product_attribute_integer_values`
 -- AUTO_INCREMENT for table `avored_product_images`
 --
 ALTER TABLE `avored_product_images`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `avored_product_prices`
 --
 ALTER TABLE `avored_product_prices`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `avored_product_property_boolean_values`
