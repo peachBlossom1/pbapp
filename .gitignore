@@ -1,0 +1,40 @@
+# Laravel 5 Specific
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+/.idea
+/.vagrant
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+.env
+
+# AvoRed Specific
+storage/framework/bootstrap/cache/services.php
+/packages
+/public/uploads
+/modules/*
+/modules/ecommerce
+/themes/*
+
+# Include Ecommerce Module
+!/modules/avored
+/modules/avored/*
+!/modules/avored/ecommerce
+
+# Include Default Theme
+!/themes/avored
+/themes/avored/*
+!/themes/avored/default
+
+# Etc
+composer.lock
+public/mix-manifest.json
+package-lock.json
+themes/avored/default/.DS_Store
+modules/avored/ecommerce/.DS_Store
+.DS_Store
+.DS_Store
