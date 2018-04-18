@@ -70,7 +70,23 @@ class CategoryViewController extends Controller
     }
 
     public function test(Request $request){
-
-        return response()->json([$request->checkedboxes]);
+    //    print_r($_POST['checkedboxes']);
+        //for each/ get 
+        $whe = '';
+        $objs = $request->input('obj');
+        $checkedboxes = $objs['checkedboxes'];
+        $count = count($checkedboxes);
+        $c = 0;
+        foreach ($checkedboxes as $checkedboxe) {
+            $whe .= '`value` = '.$checkedboxes[$c]['id'];
+            if($c != $count - 1){
+                $whe .= ' OR ';
+            }
+            $c++;
+        }
+        $users = DB::table('product_property_varchar_values')
+                    ->whereRaw($whe)
+                    ->get();
+        return response()->json($users);
     }
 }

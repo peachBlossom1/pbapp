@@ -1,12 +1,10 @@
 <div class="panel">
     <div class="panel-body">
-        <h6>Filter By Product Attributes</h6>
+        <h6>See tailored products for your need.</h6>
         <hr/>
-
-        <h4>Properties</h4>
         <?php $count = count($properties); ?>
         @for ($i = 0; $i < $count; $i++)
-        <h5>{{ $properties[$i]['name'] }}</h5>
+        <h6>{{ $properties[$i]['name'] }}</h6>
         <ul class="list-group">
               @for($j=0; $j < 3; $j++)
                   <li class="list-group-item">
@@ -14,7 +12,7 @@
                              type="checkbox"
 
                              class="category-variation-checkbox"
-                             value="{{ $properties[$i]['options'][$j]['id'] }}">
+                             value="{{ $properties[$i]['options'][$j]['id'] }}" data-parent="{{$properties[$i]['id']}}">
                       <label for="variation-{{ $properties[$i]['options'][$j]['id'] }}">
                           {{ $properties[$i]['options'][$j]['text'] }}
                       </label>
@@ -24,7 +22,7 @@
           </ul>
           @endfor
         @if(($category->children->count()) > 0)
-            <h4>Sub Categories</h4>
+            <h6>Sub Categories</h6>
             <ul class="list-group">
                 @foreach($category->children as $subCategory)
                     <li class="list-group-item">
@@ -37,7 +35,7 @@
         $attributes = $category->getFilters();
         ?>
         @foreach($attributes as $attribute)
-            <h4>{{ $attribute->name }}</h4>
+            <h6>{{ $attribute->name }}</h6>
             <ul class="list-group">
                 @foreach($attribute->attributeDropdownOptions as $option)
                     <li class="list-group-item">
@@ -76,37 +74,38 @@
 
     </div>
 </div>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 @push('scripts')
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
     jQuery(document).ready(function () {
         jQuery(document).on('change', '.category-variation-checkbox', function (e) {
             e.preventDefault();
-            alert('hi');
+            //alert('hi');
             // AJAX START - for getting SO IDS
             // AJAX START - for getting SO IDS
-           $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-              url: '/test',
+            var text = '{ "checkedboxes" : [';
+            var checkedboxes = $('.category-variation-checkbox:checkbox:checked');
+            
+            var count = checkedboxes.length;
+            checkedboxes.each(function(index,element){
+              var ele = $(element);
+              text += '{ "id":"'+ele.val()+'" , "propid":"'+ele.attr('data-parent')+'" }';
+              if(index != count-1){
+                text += ',';
+              }
+            });
+            text += ']}';
+            var obj = JSON.parse(text);
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+           $.ajax({
+              url: '{{url("/test")}}',
               type: 'POST',
-              cache: false,
-              contentType: 'application/json; charset=utf-8',
-              
-         });
-          $.ajax({
-            data: data,
-          })
-          .done(function(result){
-            $.each( result, function( key, value ) {
-            unit_rate = value['unit_rate'];
-            $('#unit_rate').val(unit_rate);
-          });         
-            calcAmount();
-          })
-          .fail(function(){
-              alert("non");
+              data: {_token: CSRF_TOKEN, obj},
+              dataType: 'JSON',
+              success: function (data) {
+                  console.log('hi');
+              }
           });
 
     });

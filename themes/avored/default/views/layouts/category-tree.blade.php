@@ -10,6 +10,14 @@
            title="{{ $category['object']->name }}">
             {{ $category['object']->name }} {!! (count($childCategories) > 0) ? '<span class="caret"></span>' : '' !!}
         </a>
+       
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+            @foreach($childCategories as $Child)
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+              @endforeach
+        </div>
 @else
 
     <li class="nav-item">

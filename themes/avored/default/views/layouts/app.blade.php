@@ -32,7 +32,7 @@
         }
     </style>
 </head>
-<body>
+<body style="overflow-x: hidden;">
 <script src="{{ asset('/vendor/avored-default/js/jquery-3.2.1.slim.min.js') }}"></script>
 <script src="{{ asset('/vendor/avored-default/js/popper.min.js') }}"></script>
 <script src="{{ asset('/vendor/avored-default/js/bootstrap.min.js') }}"></script>

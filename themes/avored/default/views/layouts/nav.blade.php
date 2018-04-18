@@ -2,13 +2,10 @@
     <div class="container">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="https://github.com/avored/laravel-ecommerce"><i class="fab fa-github"></i> GitHub</a>
+                <a class="nav-link" href="#"><i class="fab fa-facebook"></i> Facebook</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://www.facebook.com/avoredecommerce/"><i class="fab fa-facebook"></i> Facebook</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="https://twitter.com/avoredecommerce/"><i class="fab fa-twitter"></i> Twitter</a>
+                <a class="nav-link" href="#"><i class="fab fa-twitter"></i> Twitter</a>
             </li>
         </ul>
         <ul class="navbar-nav">
@@ -31,7 +28,7 @@
 
             @guest()
             <li class="nav-item active">
-                <a class="nav-link" href="#">Welcome msg!
+                <a class="nav-link" href="#">Welcome!
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
@@ -41,6 +38,12 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('register') }}">Create an Account</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('cart.view') }}">Cart ({{ Cart::count() }})</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('checkout.index') }}">Checkout</a>
             </li>
             @endguest()
 
@@ -54,7 +57,7 @@
             <div class="col-md-6">
                 <a class="navbar-brand" href="{{ route('home') }}">
                     <span style="font-size: 32px; font-weight: 500; margin-top: 10px;">
-                        <img src="/img/logo.svg" alt="logo" class="logo">AvoRed Store
+                        <img src="{{ url('/img/logo.png')}}" alt="Peach Blossom" class="logo" style="width: 100%;">
                     </span>
                 </a>
             </div>
@@ -79,7 +82,7 @@
    
 <nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="#">Hot Deals!</a>
+        <a class="" href="{{url('/')}}">Home!</a>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -87,9 +90,34 @@
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
-                @include('layouts.category-tree',['categories', $categories])
-                <li class="nav-item"><a class="nav-link" href="{{ route('cart.view') }}">Cart ({{ Cart::count() }})</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('checkout.index') }}">Checkout</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"
+                       href="{{ route ('category.view', 'Products')}}" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       title="Plants">
+                        Plants <span class="caret"></span>
+                    </a>
+                   
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                          <a class="dropdown-item" href="{{ route ('category.view', 'Flowers')}}">Flowers</a>
+                          <a class="dropdown-item" href="{{ route ('category.view', 'cactus')}}">Cactus</a>
+                          <a class="dropdown-item" href="{{ route ('category.view', 'plant')}}">Indoor Plant</a>
+                    </div>
+                </li>
+                <li class="dropdown nav-item">
+                    <a href="{{ route ('category.view', 'Tool')}}" title="Tools" class="nav-link">
+                            Tools
+                    </a>
+                </li>
+                <li class="dropdown nav-item">
+                    <a href="{{ route ('category.view', 'living-room')}}" title="living-room" class="nav-link">
+                           Living Rooms
+                    </a>
+                </li>
+                <li class="dropdown nav-item">
+                    <a href="{{ url('proffesionalhire/show')}}" title="living-room" class="nav-link">
+                           Appoint Professional
+                    </a>
+                </li>
                 <li class="dropdown nav-item">
                     <a href="{{ route('my-account.home') }}" title="My Account" class="nav-link">
                         My Account
