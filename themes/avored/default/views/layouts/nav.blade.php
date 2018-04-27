@@ -109,12 +109,12 @@
                     </a>
                 </li>
                 <li class="dropdown nav-item">
-                    <a href="{{ route ('category.view', 'living-room')}}" title="living-room" class="nav-link">
-                           Living Rooms
+                    <a href="{{ route ('category.view', 'Fertilizer')}}" title="Fertilizer" class="nav-link">
+                           Fertilizer
                     </a>
                 </li>
                 <li class="dropdown nav-item">
-                    <a href="{{ url('proffesionalhire/show')}}" title="living-room" class="nav-link">
+                    <a href="{{ url('proffesionalhire/show')}}" title="Fertilizer" class="nav-link">
                            Appoint Professional
                     </a>
                 </li>
