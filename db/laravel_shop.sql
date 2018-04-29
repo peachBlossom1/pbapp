@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2018 at 12:30 PM
+-- Generation Time: Apr 29, 2018 at 01:47 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -185,10 +185,11 @@ CREATE TABLE `avored_categories` (
 INSERT INTO `avored_categories` (`id`, `parent_id`, `name`, `slug`, `meta_title`, `meta_description`, `created_at`, `updated_at`) VALUES
 (1, NULL, 'Plant', 'Product', NULL, NULL, '2018-03-28 20:50:25', '2018-03-29 00:45:01'),
 (2, NULL, 'Tools', 'Tool', NULL, NULL, '2018-03-28 20:50:25', '2018-03-29 01:52:39'),
-(3, NULL, 'Living Room', 'living-room', NULL, NULL, '2018-03-28 20:50:25', '2018-03-28 20:50:25'),
+(3, NULL, 'Fertilizer', 'fertilizer', NULL, NULL, '2018-03-28 20:50:25', '2018-04-25 06:25:18'),
 (4, 1, 'Flowering', 'Flowers', NULL, NULL, '2018-03-29 00:45:26', '2018-03-29 00:45:26'),
 (5, 1, 'Cactus', 'cactus', NULL, NULL, '2018-03-29 01:42:34', '2018-03-29 01:42:34'),
-(6, 1, 'Indoor Plant', 'plant', NULL, NULL, '2018-03-29 01:42:54', '2018-03-29 01:42:54');
+(6, 1, 'Indoor Plant', 'plant', NULL, NULL, '2018-03-29 01:42:54', '2018-03-29 01:42:54'),
+(7, NULL, 'Kitchen Garden', 'kitchen-garden', NULL, NULL, '2018-04-27 12:57:37', '2018-04-27 12:57:37');
 
 -- --------------------------------------------------------
 
@@ -222,7 +223,9 @@ INSERT INTO `avored_category_product` (`id`, `category_id`, `product_id`, `creat
 (26, 2, 32, NULL, NULL),
 (27, 2, 33, NULL, NULL),
 (28, 2, 34, NULL, NULL),
-(29, 2, 35, NULL, NULL);
+(29, 2, 35, NULL, NULL),
+(30, 3, 38, NULL, NULL),
+(31, 7, 40, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -836,7 +839,7 @@ CREATE TABLE `avored_products` (
 
 INSERT INTO `avored_products` (`id`, `type`, `name`, `slug`, `sku`, `description`, `status`, `in_stock`, `track_stock`, `qty`, `is_taxable`, `weight`, `width`, `height`, `length`, `meta_title`, `meta_description`, `created_at`, `updated_at`) VALUES
 (22, 'BASIC', 'aaa', 'aaa', '1', '<p>11&nbsp; &nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;</p>', 1, 1, 1, '0.000000', 1, 1.00, 1.00, 1.00, 11.00, NULL, NULL, '2018-03-29 01:33:35', '2018-03-29 02:14:27'),
-(23, 'BASIC', 'Sunflower', 'sunflower-1', 'A-001', '<p>11</p>', 1, 1, 1, '100.000000', 1, 1.00, 1.00, 3.00, 1.00, NULL, NULL, '2018-03-29 01:36:08', '2018-03-29 01:38:18'),
+(23, 'BASIC', 'Sunflower', 'sunflower-1', 'A-001', '<h6>Full Sun</h6><p>Water Regulalry</p>', 1, 1, 1, '100.000000', 1, 1.00, 1.00, 3.00, 1.00, NULL, NULL, '2018-03-29 01:36:08', '2018-04-25 09:51:04'),
 (24, 'BASIC', 'MariGold', 'marigold-1', 'A-0002', 'ff', 1, 1, 1, '1.000000', 1, 1.00, 1.00, 1.00, 1.00, NULL, NULL, '2018-03-29 01:38:59', '2018-03-29 01:40:49'),
 (25, 'BASIC', 'Hibiscus', 'hibiscus', 'A-0003', '<p>tree</p>', 1, 1, 0, '100.000000', 1, 1.00, 1.00, 1.00, 1.00, NULL, NULL, '2018-03-29 01:41:29', '2018-03-29 01:42:07'),
 (26, 'BASIC', 'Ariocarpus confusus', 'ariocarpus-confusus', 'A-0004', '<p>cactus&nbsp;&nbsp;&nbsp;&nbsp;</p>', 1, 1, 1, '50.000000', 1, 1.00, 1.00, 1.00, 1.00, NULL, NULL, '2018-03-29 01:43:21', '2018-03-29 01:44:06'),
@@ -848,7 +851,10 @@ INSERT INTO `avored_products` (`id`, `type`, `name`, `slug`, `sku`, `description
 (32, 'BASIC', 'spade', 'spade', 'B-0001', '<p>Tools</p>', 1, 1, 1, '2.000000', 1, 2.00, NULL, 4.00, 6.00, NULL, NULL, '2018-03-29 01:53:04', '2018-03-29 01:54:23'),
 (33, 'BASIC', 'Rake', 'rake', 'B-0002', '<p>Tools</p>', 1, 1, 1, '6.000000', 1, 3.00, 10.00, 6.00, 4.00, NULL, NULL, '2018-03-29 01:56:45', '2018-03-29 01:57:34'),
 (34, 'BASIC', 'Shovel', 'shovel', 'B-0003', '<p>Tools</p>', 0, 0, 0, NULL, 0, 1.00, 1.00, 2.00, 6.00, NULL, NULL, '2018-03-29 01:58:05', '2018-03-29 01:59:06'),
-(35, 'BASIC', 'Watering Can', 'watering-can', 'B-0004', '<p>tool</p>', 1, 1, 1, '6.000000', 1, 1.00, 3.00, 4.00, 6.00, NULL, NULL, '2018-03-29 02:00:31', '2018-03-29 02:01:31');
+(35, 'BASIC', 'Watering Can', 'watering-can', 'B-0004', '<p>tool</p>', 1, 1, 1, '6.000000', 1, 1.00, 3.00, 4.00, 6.00, NULL, NULL, '2018-03-29 02:00:31', '2018-03-29 02:01:31'),
+(38, 'BASIC', 'Lawn Fertilizer', 'lawn-fertilizer', 'A-038', '<p>LF</p>', 1, 1, 1, '20.000000', 1, 5.00, 4.00, 6.00, 6.00, NULL, NULL, '2018-04-25 06:37:06', '2018-04-25 06:41:17'),
+(40, 'BASIC', 'Apple', 'apple-1', 'H-001', '<p>Seeds</p>', 1, 1, 1, '20.000000', 1, NULL, NULL, NULL, NULL, NULL, NULL, '2018-04-27 13:05:22', '2018-04-27 13:06:52'),
+(41, 'BASIC', 'aloe vera', 'aloe-vera', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-04-28 02:27:00', '2018-04-28 02:27:00');
 
 -- --------------------------------------------------------
 
@@ -898,7 +904,9 @@ INSERT INTO `avored_product_images` (`id`, `product_id`, `path`, `is_main_image`
 (25, 32, '/uploads/catalog/images/8/m/k/29748429_1870928279597245_310865850_o.jpg', 1, '2018-03-29 01:54:23', '2018-03-29 01:54:23'),
 (26, 33, '/uploads/catalog/images/d/t/a/29750875_1870946792928727_963385946_n.jpg', 1, '2018-03-29 01:57:35', '2018-03-29 01:57:35'),
 (27, 34, '/uploads/catalog/images/g/n/e/29550701_1870947112928695_562962355_n.jpg', 1, '2018-03-29 01:59:06', '2018-03-29 01:59:06'),
-(28, 35, '/uploads/catalog/images/j/k/m/29665951_1870948819595191_2077837264_n.jpg', 1, '2018-03-29 02:01:31', '2018-03-29 02:01:31');
+(28, 35, '/uploads/catalog/images/j/k/m/29665951_1870948819595191_2077837264_n.jpg', 1, '2018-03-29 02:01:31', '2018-03-29 02:01:31'),
+(29, 38, '/uploads/catalog/images/x/e/o/021496002644.jpg', 1, '2018-04-25 06:41:17', '2018-04-25 06:41:17'),
+(30, 40, '/uploads/catalog/images/b/p/b/925871679_883.jpg', 1, '2018-04-27 13:06:52', '2018-04-27 13:06:52');
 
 -- --------------------------------------------------------
 
@@ -932,7 +940,9 @@ INSERT INTO `avored_product_prices` (`id`, `product_id`, `price`, `created_at`, 
 (26, 32, '800.000000', '2018-03-29 01:54:23', '2018-03-29 01:54:23'),
 (27, 33, '300.000000', '2018-03-29 01:57:35', '2018-03-29 01:57:35'),
 (28, 34, '300.000000', '2018-03-29 01:59:06', '2018-03-29 01:59:06'),
-(29, 35, '500.000000', '2018-03-29 02:01:31', '2018-03-29 02:01:31');
+(29, 35, '500.000000', '2018-03-29 02:01:31', '2018-03-29 02:01:31'),
+(30, 38, '250.000000', '2018-04-25 06:41:17', '2018-04-25 06:41:17'),
+(31, 40, '100.000000', '2018-04-27 13:06:52', '2018-04-27 13:06:52');
 
 -- --------------------------------------------------------
 
@@ -1024,6 +1034,17 @@ CREATE TABLE `avored_product_property_varchar_values` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `avored_product_property_varchar_values`
+--
+
+INSERT INTO `avored_product_property_varchar_values` (`id`, `property_id`, `product_id`, `value`, `created_at`, `updated_at`) VALUES
+(1, 2, 22, '17', '2018-04-25 09:43:20', '2018-04-25 09:43:20'),
+(2, 2, 23, '16', '2018-04-25 09:44:58', '2018-04-25 09:44:58'),
+(3, 3, 23, '30', '2018-04-25 09:44:58', '2018-04-25 09:44:58'),
+(4, 4, 23, '25', '2018-04-25 09:44:58', '2018-04-25 09:44:58'),
+(5, 6, 23, '31', '2018-04-25 09:44:58', '2018-04-25 09:44:58');
+
 -- --------------------------------------------------------
 
 --
@@ -1062,7 +1083,8 @@ CREATE TABLE `avored_properties` (
 INSERT INTO `avored_properties` (`id`, `name`, `identifier`, `data_type`, `field_type`, `sort_order`, `created_at`, `updated_at`) VALUES
 (2, 'Water Requirement', 'WaterRequirement', 'VARCHAR', 'SELECT', 1, '2018-03-29 02:25:40', '2018-03-29 02:29:18'),
 (3, 'Plant Life', 'PlantLife', 'VARCHAR', 'SELECT', 2, '2018-03-29 02:34:04', '2018-03-29 04:45:03'),
-(4, 'Sun Requirement', 'sunrequirement', 'VARCHAR', 'SELECT', 3, '2018-03-29 02:35:22', '2018-03-29 04:44:54');
+(4, 'Sun Requirement', 'sunrequirement', 'VARCHAR', 'SELECT', 3, '2018-03-29 02:35:22', '2018-03-29 04:44:54'),
+(6, 'Plant Type', 'plantType', 'VARCHAR', 'SELECT', 10, '2018-04-25 06:20:09', '2018-04-25 10:44:05');
 
 -- --------------------------------------------------------
 
@@ -1091,7 +1113,14 @@ INSERT INTO `avored_property_dropdown_options` (`id`, `property_id`, `display_te
 (27, 4, 'No Sunlight', '2018-03-29 04:44:55', '2018-03-29 04:44:55'),
 (28, 3, 'evergreen', '2018-03-29 04:45:03', '2018-03-29 04:45:03'),
 (29, 3, 'Annual', '2018-03-29 04:45:03', '2018-03-29 04:45:03'),
-(30, 3, 'seasonal', '2018-03-29 04:45:03', '2018-03-29 04:45:03');
+(30, 3, 'seasonal', '2018-03-29 04:45:03', '2018-03-29 04:45:03'),
+(59, 6, 'Shrubs', '2018-04-27 12:41:47', '2018-04-27 12:41:47'),
+(60, 6, 'Trees', '2018-04-27 12:41:47', '2018-04-27 12:41:47'),
+(61, 6, 'Herb/Forb', '2018-04-27 12:41:47', '2018-04-27 12:41:47'),
+(62, 6, 'Cactus/Succulent', '2018-04-27 12:41:47', '2018-04-27 12:41:47'),
+(63, 6, 'Grass/Grass-like', '2018-04-27 12:41:47', '2018-04-27 12:41:47'),
+(64, 6, 'Fern', '2018-04-27 12:41:47', '2018-04-27 12:41:47'),
+(65, 6, 'Vine', '2018-04-27 12:41:47', '2018-04-27 12:41:47');
 
 -- --------------------------------------------------------
 
@@ -1536,13 +1565,13 @@ ALTER TABLE `avored_attribute_product`
 -- AUTO_INCREMENT for table `avored_categories`
 --
 ALTER TABLE `avored_categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `avored_category_product`
 --
 ALTER TABLE `avored_category_product`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `avored_configurations`
@@ -1620,7 +1649,7 @@ ALTER TABLE `avored_permission_role`
 -- AUTO_INCREMENT for table `avored_products`
 --
 ALTER TABLE `avored_products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `avored_product_attribute_integer_values`
@@ -1632,13 +1661,13 @@ ALTER TABLE `avored_product_attribute_integer_values`
 -- AUTO_INCREMENT for table `avored_product_images`
 --
 ALTER TABLE `avored_product_images`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `avored_product_prices`
 --
 ALTER TABLE `avored_product_prices`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `avored_product_property_boolean_values`
@@ -1674,7 +1703,7 @@ ALTER TABLE `avored_product_property_text_values`
 -- AUTO_INCREMENT for table `avored_product_property_varchar_values`
 --
 ALTER TABLE `avored_product_property_varchar_values`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `avored_product_variations`
@@ -1686,13 +1715,13 @@ ALTER TABLE `avored_product_variations`
 -- AUTO_INCREMENT for table `avored_properties`
 --
 ALTER TABLE `avored_properties`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `avored_property_dropdown_options`
 --
 ALTER TABLE `avored_property_dropdown_options`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `avored_roles`
