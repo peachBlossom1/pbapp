@@ -28,7 +28,7 @@
 
             @guest()
             <li class="nav-item active">
-                <a class="nav-link" href="#">Welcome!
+                <a class="nav-link" href="#">Welcome to Peach Blossom!
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
@@ -111,6 +111,11 @@
                 <li class="dropdown nav-item">
                     <a href="{{ route ('category.view', 'Fertilizer')}}" title="Fertilizer" class="nav-link">
                            Fertilizer
+                    </a>
+                </li>
+                <li class="dropdown nav-item">
+                    <a href="{{ route ('category.view', 'Kitchen Garden')}}" title="Kitchen Garden" class="nav-link">
+                        Kitchen Garden
                     </a>
                 </li>
                 <li class="dropdown nav-item">
