@@ -36,6 +36,19 @@ class ProductCollection extends Collection
         return $this;
     }
 
+    public function addPropertyFilter($propertyId, $value)
+    {
+        $this->_collection = $this->_collection->filter(function ($product) use ($propertyId, $value) {
+            foreach ($product->getProductAllProperties() as $productProperty) {
+                if ($productProperty->property_id == $propertyId && $productProperty->value == $value) {
+                    return $product;
+                }
+            }
+        });
+
+        return $this;
+    }
+
     public function paginateCollection($perPage = 10)
     {
         $request = request();

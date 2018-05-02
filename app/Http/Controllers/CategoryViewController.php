@@ -37,7 +37,11 @@ class CategoryViewController extends Controller
         $collections = $this->productRepository->model()->getCollection()
             ->addCategoryFilter($category->id);
 
-        $properties = DB::table('properties')->get();
+        $properties = DB::table('product_property_varchar_values AS props')
+                        ->join('category_product AS cat', 'cat.product_id', '=', 'props.product_id')
+                        ->join('properties AS prop', 'props.property_id', '=', 'prop.id')
+                        ->Where('cat.category_id','=',$category->id)
+                        ->get();
         $props = Array();
         $i = 0;
         foreach ($properties as $property) {
@@ -54,13 +58,15 @@ class CategoryViewController extends Controller
         }
 
         foreach ($request->except(['page']) as $attributeIdentifier => $value) {
-            $attribute = $this->productRepository->attributeModel()->where('identifier', '=', $attributeIdentifier)->first();
+            //print_r($request->except(['page']));
+            $attribute = $this->productRepository->PropertyModel()->where('identifier', '=', $attributeIdentifier)->first();
+            // print_r($attribute->id);
+            // die;
 
-            $collections->addAttributeFilter($attribute->id, $value);
+            $collections->addPropertyFilter($attribute->id, $value);
         }
 
         $categoryProducts = $collections->paginateCollection($productsOnCategoryPage);
-
         return view('catalog.category.view')
             ->with('category', $category)
             ->with('params', $request->all())
@@ -68,25 +74,5 @@ class CategoryViewController extends Controller
             ->with('properties', $props);
 
     }
-
-    public function test(Request $request){
-    //    print_r($_POST['checkedboxes']);
-        //for each/ get 
-        $whe = '';
-        $objs = $request->input('obj');
-        $checkedboxes = $objs['checkedboxes'];
-        $count = count($checkedboxes);
-        $c = 0;
-        foreach ($checkedboxes as $checkedboxe) {
-            $whe .= '`value` = '.$checkedboxes[$c]['id'];
-            if($c != $count - 1){
-                $whe .= ' OR ';
-            }
-            $c++;
-        }
-        $users = DB::table('product_property_varchar_values')
-                    ->whereRaw($whe)
-                    ->get();
-        return response()->json($users);
-    }
+    
 }

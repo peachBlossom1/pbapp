@@ -92,4 +92,30 @@ class Category extends Model
 
         return $attrs;
     }
+    public function getPropertyFilters()
+    {
+        $attrs = Collection::make([]);
+
+        $productIds = Collection::make([]);
+        $products = $this->products;
+
+        foreach ($products as $product) {
+            foreach ($product->productVarcharProperties as $property) {
+                //dd($variation);
+                $productIds->push($property->property_id);
+            }
+            $productIds->push($product->id);
+        }
+
+
+        $collections = ProductPropertyVarcharValue::whereIn('product_id', $productIds)->get()->unique('property_id');
+
+        foreach ($collections as $booleanValue) {
+            $attrs->push(Property::find($booleanValue->property_id));
+        }
+        // print_r($attrs);
+        // die;
+
+        return $attrs;
+    }
 }
