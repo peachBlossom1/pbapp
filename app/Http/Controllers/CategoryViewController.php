@@ -37,25 +37,7 @@ class CategoryViewController extends Controller
         $collections = $this->productRepository->model()->getCollection()
             ->addCategoryFilter($category->id);
 
-        $properties = DB::table('product_property_varchar_values AS props')
-                        ->join('category_product AS cat', 'cat.product_id', '=', 'props.product_id')
-                        ->join('properties AS prop', 'props.property_id', '=', 'prop.id')
-                        ->Where('cat.category_id','=',$category->id)
-                        ->get();
-        $props = Array();
-        $i = 0;
-        foreach ($properties as $property) {
-            $props[$i]['id'] = $property->id;
-            $props[$i]['name'] = $property->name;
-            $opts = DB::table('property_dropdown_options')->where('property_id',$property->id)->get();
-            $j = 0;
-            foreach ($opts as $opt) {
-                $props[$i]['options'][$j]['id'] = $opt->id;
-                $props[$i]['options'][$j]['text'] = $opt->display_text;
-                $j++;
-            }
-            $i++;
-        }
+        
 
         foreach ($request->except(['page']) as $attributeIdentifier => $value) {
             //print_r($request->except(['page']));
@@ -70,8 +52,7 @@ class CategoryViewController extends Controller
         return view('catalog.category.view')
             ->with('category', $category)
             ->with('params', $request->all())
-            ->with('products', $categoryProducts)
-            ->with('properties', $props);
+            ->with('products', $categoryProducts);
 
     }
     
